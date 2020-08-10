@@ -29,7 +29,7 @@ if(we didn't find any match) {
 }
 ```
 
-This approach would take us O(n<sup>2</sup>) time, both the checking and the updating.
+This approach would take us O(n<sup>2</sup>) time (O(n) per cycle), both the checking and the updating.
 
 However, this is wasting a lot of time: we are adding the same number again and again. Instead, we could:
 - Use a set as our container of prefixes. Checking if a set has an element `e` where `e == target - nums[i]` takes us O(1) time.
