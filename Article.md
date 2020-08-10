@@ -7,7 +7,7 @@ We can be sure that the first valid [subarray](https://www.techiedelight.com/dif
   - <code>j<sub>1</sub></code> is the smallest of all <code>j<sub>k</sub></code>.
   - If we split `nums` into two subarrays <code>[0, j<sub>1</sub>]</code> and <code>[j<sub>1</sub> + 1, nums.length]</code>, 
     - To the left side there isn't more than one non-overlapping valid subarray. There could be more than one valid subarray, but all of them end at <code>j<sub>1</sub></code>.
-    - Any valid subarray that begins on the left side and ends on the right has no non-overlapping subarrays to the left. The remaining space to the right is a subarray of our remaining space. Therefore, any set of subarrays that we can find in that remaining space is also a set of subarrays of our space. Any set that includes that subarray as a member has a size smaller or equal to the one we are extracting. Remember that we only want the *maximum size*, not the set itself.
+    - Any valid subarray that begins on the left side and ends on the right has no non-overlapping subarrays to the left. The remaining space to the right is a subarray of our remaining space. Therefore, any set of subarrays that we can find in that remaining space is also a set of subarrays of our space. Any set that includes that subarray as a member has a size smaller or equal to the one we are extracting. Remember that **we only want the maximum size**, not the set itself.
   - At this point, we can recursively find the rest of the set by returning `maxNonOverlapping(remaining_nums_after_j1, target) + 1`, or better yet, reset our auxiliary variables and continue traversing `nums` from <code>j<sub>1</sub> + 1</code>.
     
 
@@ -33,7 +33,7 @@ This approach would take us O(n<sup>2</sup>) time (O(n) per cycle), both the che
 
 However, this is wasting a lot of time: we are adding the same number again and again. Instead, we could:
 - Use a set as our container of prefixes. Checking if a set has an element `e` where `e == target - nums[i]` takes us O(1) time.
-- Instead of saving the sum of all elements that belong to our prefix, we save the sum of all that *don't belong*. We define an integer `sum` of all elements up to the current one, so that `sum - complement_to_the_prefix` equals `prefix`. If `sum - complement_to_the_prefix == target - nums[i]`, then we have found a valid subarray. At the end of each cycle, `sum == new_complement_to_the_prefix` without any other intervention, so we just have to add `sum` to our set, and that costs us O(1) time and O(1) space.
+- Instead of saving the sum of all elements that belong to our prefix, we save the sum of all that **don't belong**. We define an integer `sum` of all elements up to the current one, so that `sum - complement_to_the_prefix` equals `prefix`. If `sum - complement_to_the_prefix == target - nums[i]`, then we have found a valid subarray. At the end of each cycle, `sum == new_complement_to_the_prefix` without any other intervention, so we just have to add `sum` to our set, and that costs us O(1) time and O(1) space.
 ```
 sum = sum + nums[i];
 if(our set contains (sum - target)) {
