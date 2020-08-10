@@ -1,6 +1,6 @@
-## Solution
-#### Approach 1: Greedy with a collection of prefixes
-###### Intuition
+# Solution
+### Approach 1: Greedy with a collection of prefixes
+##### Intuition
 As a general rule, any greedy approach to a dynamic programming problem requires us to explicitly make sure that the steps taken lead us to a correct solution. Greedy is only feasible when we have **proof** that greedy is correct.
 
 We can be sure that the first valid subarray <code>[i<sub>1</sub>, j<sub>1</sub>]</code> we find, starting from the left, belongs to a best set of non-overlapping subarrays:
@@ -11,7 +11,7 @@ We can be sure that the first valid subarray <code>[i<sub>1</sub>, j<sub>1</sub>
   - At this point, we can recursively find the rest of the set by returning `maxNonOverlapping(...) + 1`, or better yet, reset our auxilliary variables and continue traversing `nums` from <code>j<sub>1</sub> + 1</code>.
     
 
-###### Algorithm
+##### Algorithm
 We need to loop through `nums` from the beginning, and at each point we want to check if there is a substring of `nums` that ends where we are, that adds up to `target`. 
 
 We can maintain a collection of (partial sums of) prefixes, and at each point check if we have a prefix where `prefix + nums[i] == target`.
@@ -43,10 +43,10 @@ if(our set contains (sum - target)) {
 else add sum to the set;
 ```
 
-###### Analysis of constraints
+##### Analysis of constraints
 Within the given constraints, we will never have our `sum` variable be bigger than <code>10<sup>4</sup> * 10<sup>5</sup> = 10<sup>9</sup></code>, nor will any element of our set be bigger than that value. 4-byte signed integers would do fine. There isn't also the possibility of an empty `nums`, and `target` is within reasonable constraints. There is no need to check for any special boundary conditions.
 
-###### Complexity Analysis
+##### Complexity Analysis
 Worst case, we never find a valid subarray and our set of complements keeps growing by one at each point. We always need to traverse the whole loop, and each time we need to make one lookup and one update to our set.
 
 Time complexity: ***O(n)***
