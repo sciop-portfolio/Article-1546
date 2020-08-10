@@ -51,6 +51,6 @@ We do need to pay attention to when `nums[i] == target`, e.g. subarrays of size 
 ##### Complexity Analysis
 Worst case, we never find a valid subarray and our set of complements keeps growing by one at each point. We always need to traverse the whole loop, and each time we need to make one lookup and one addition to our set.
 
-Time complexity:  ***O(n)***  ->  O(nums.length)
+Time complexity:  ***O(n)***
 
-Space complexity: ***O(n)***  ->  O(nums.length)
+Space complexity: ***O(n)***
