@@ -46,6 +46,8 @@ else add sum to the set;
 ##### Analysis of constraints
 Within the given constraints, we will never have our `sum` variable be bigger than <code>10<sup>4</sup> * 10<sup>5</sup> = 10<sup>9</sup></code>, nor will any element of our set be bigger than that value. 4-byte signed integers would do fine. There isn't also the possibility of an empty `nums`, and `target` is within reasonable constraints. There is no need to check for any special boundary conditions.
 
+We do need to pay attention to when `nums[i] == target`, e.g. subarrays of size 1. Empty subarrays are explicitly forbidden by the problem description, and with good reason.
+
 ##### Complexity Analysis
 Worst case, we never find a valid subarray and our set of complements keeps growing by one at each point. We always need to traverse the whole loop, and each time we need to make one lookup and one update to our set.
 
