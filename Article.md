@@ -6,7 +6,7 @@ As a general rule, any greedy approach to a dynamic programming problem requires
 We can be sure that the first valid [subarray](https://www.techiedelight.com/difference-between-subarray-subsequence-subset/) <code>[i<sub>1</sub>, j<sub>1</sub>]</code> we find, starting from the left, belongs to a best set of non-overlapping subarrays:
   - <code>j<sub>1</sub></code> is the smallest of all <code>j<sub>k</sub></code>.
   - If we split `nums` into two subarrays <code>[0, j<sub>1</sub>]</code> and <code>[j<sub>1</sub> + 1, nums.length]</code>, 
-    - To the left side there isn't more than one non-overlapping valid subarray. There could be more than one valid subarray, but all of them end at <code>j<sub>k</sub></code>.
+    - To the left side there isn't more than one non-overlapping valid subarray. There could be more than one valid subarray, but all of them end at <code>j<sub>1</sub></code>.
     - Any valid subarray that begins on the left side and ends on the right has no non-overlapping subarrays to the left. The remaining space to the right is a subarray of our remaining space. Therefore, any set of subarrays that we can find in that remaining space is also a set of subarrays of our space. Any set that includes that subarray as a member has a size smaller or equal to the one we are extracting. Remember that we only want the *maximum size*, not the set itself.
   - At this point, we can recursively find the rest of the set by returning `maxNonOverlapping(remaining_nums_after_j1, target) + 1`, or better yet, reset our auxiliary variables and continue traversing `nums` from <code>j<sub>1</sub> + 1</code>.
     
