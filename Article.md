@@ -1,6 +1,14 @@
 # Solution
 ### Approach 1: Greedy with a collection of prefixes
 ##### Intuition
+
+This problem entails a certain buildup of complexity. A brute force approach would force us to:
+  - Find not one substring of `nums` with `sum == target` but all possible *valid substrings*.
+  - Find all combinations of valid substrings where none overlaps with each other.
+  - Loop through our collection of collections of substrings to find out which one has the biggest size.
+  
+Here we will try to greedily cut `nums` into sections that we know contain valid substrings, as often as we can, and count the number of cuts.
+
 As a general rule, any greedy approach to a dynamic programming problem requires us to explicitly make sure that the steps taken lead us to a correct solution. Greedy is only feasible when we have **proof** that our particular greedy solution is correct.
 
 We can be sure that the first valid [subarray](https://www.techiedelight.com/difference-between-subarray-subsequence-subset/) <code>[i<sub>1</sub>, j<sub>1</sub>]</code> we find, starting from the left, belongs to a best set of non-overlapping subarrays:
