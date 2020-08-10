@@ -3,7 +3,7 @@
 ##### Intuition
 As a general rule, any greedy approach to a dynamic programming problem requires us to explicitly make sure that the steps taken lead us to a correct solution. Greedy is only feasible when we have **proof** that our particular greedy solution is correct.
 
-We can be sure that the first valid subarray <code>[i<sub>1</sub>, j<sub>1</sub>]</code> we find, starting from the left, belongs to a best set of non-overlapping subarrays:
+We can be sure that the first valid (subarray)[https://www.techiedelight.com/difference-between-subarray-subsequence-subset/] <code>[i<sub>1</sub>, j<sub>1</sub>]</code> we find, starting from the left, belongs to a best set of non-overlapping subarrays:
   - <code>j<sub>1</sub></code> is the smallest of all <code>j<sub>k</sub></code>.
   - If we split `nums` into two subarrays <code>[0, j<sub>1</sub>]</code> and <code>[j<sub>1</sub> + 1, nums.length]</code>, 
     - To the left side there isn't more than one non-overlapping subarray.
