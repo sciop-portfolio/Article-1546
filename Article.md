@@ -32,7 +32,7 @@ if(we didn't find any match) {
 This approach would take us O(n<sup>2</sup>) time, both the checking and the updating.
 
 However, this is wasting a lot of time: we are adding the same number again and again. Instead, we could:
-- Use a set as our container of prefixes. Checking if a Set has an element `e` where `e == target - nums[i]` takes us O(1) time.
+- Use a set as our container of prefixes. Checking if a set has an element `e` where `e == target - nums[i]` takes us O(1) time.
 - Instead of saving the sum of all elements that belong to our subarray, we save the sum of all that *don't belong*. We define an integer `sum` of all elements up to the current one, so that `sum - complement-to-the-prefix` equals `prefix`. If `sum + nums[i] - complement-to-the-prefix == target`, then we have found a valid subarray.
 ```
 sum = sum + nums[i];
