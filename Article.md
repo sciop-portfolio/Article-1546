@@ -8,7 +8,7 @@ We can be sure that the first valid subarray <code>[i<sub>1</sub>, j<sub>1</sub>
   - If we split `nums` into two subarrays <code>[0, j<sub>1</sub>]</code> and <code>[j<sub>1</sub> + 1, nums.length]</code>, 
     - To the left side there isn't more than one non-overlapping subarray.
     - Any valid subarray that begins on the left side and ends on the right has no non-overlapping subarrays to the left. The remaining space to the right is a subarray of our remaining space. Therefore, any set of subarrays that we can find in that remaining space is also a set of subarrays of our space. Any set that includes that subarray as a member has a size smaller or equal to the one we are extracting. Remember that we only want the *maximum size*, not the set itself.
-  - At this point, we can recursively find the rest of the set by returning `maxNonOverlapping(...) + 1`, or better yet, reset our auxilliary variables and continue traversing `nums` from <code>j<sub>1</sub> + 1</code>.
+  - At this point, we can recursively find the rest of the set by returning `maxNonOverlapping(remaining_nums_after_j1, target) + 1`, or better yet, reset our auxiliary variables and continue traversing `nums` from <code>j<sub>1</sub> + 1</code>.
     
 
 ##### Algorithm
