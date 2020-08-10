@@ -7,7 +7,8 @@ We can be sure that the first valid subarray <code>[i<sub>1</sub>, j<sub>1</sub>
   - <code>j<sub>1</sub></code> is the smallest of all <code>j<sub>k</sub></code>.
   - If we split `nums` at <code>j<sub>1</sub></code>, 
     - To the left of <code>j<sub>1</sub></code> there is no non-overlapping subarray.
-    - Any valid subarray that begins on the left side and ends on the right has no non-overlapping subarrays to its left. The remaining space to it's right is a subarray of our remaining space. Therefore, any set of subarrays that we can find in that remaining space is also a set of subarrays of our space. Any set that includes that subarray as a member has a size smaller or equal to the one we selected.
+    - Any valid subarray that begins on the left side and ends on the right has no non-overlapping subarrays to its left. The remaining space to it's right is a subarray of our remaining space. Therefore, any set of subarrays that we can find in that remaining space is also a set of subarrays of our space. Any set that includes that subarray as a member has a size smaller or equal to the one we are extracting.
+  -At this point, we can recursively find the rest of the set by returning `maxNonOverlapping(...) + 1`, or better yet, reset our auxilliary variables and continue traversing `nums`.
     
 
 ###### Algorithm
