@@ -14,7 +14,7 @@ We can be sure that the first valid [subarray](https://www.techiedelight.com/dif
 ##### Algorithm
 We need to loop through `nums` from the beginning, and at each point we want to check if there is a substring of `nums` that ends where we are, that adds up to `target`. 
 
-We can maintain a collection of (partial sums of) prefixes, and at each point check if we have a prefix where `prefix + nums[i] == target`.
+We can maintain a collection of (sums of) prefixes, and at each point check if we have a prefix where `prefix + nums[i] == target`.
 A naive approach would be to do just that:
 ```
 for each prefix {
