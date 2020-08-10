@@ -33,7 +33,7 @@ This approach would take us O(n<sup>2</sup>) time, both the checking and the upd
 
 However, this is wasting a lot of time: we are adding the same number again and again. Instead, we could:
 - Use a set as our container of prefixes. Checking if a set has an element `e` where `e == target - nums[i]` takes us O(1) time.
-- Instead of saving the sum of all elements that belong to our prefix, we save the sum of all that *don't belong*. We define an integer `sum` of all elements up to the current one, so that `sum - complement-to-the-prefix` equals `prefix`. If `sum + nums[i] - complement-to-the-prefix == target`, then we have found a valid subarray.
+- Instead of saving the sum of all elements that belong to our prefix, we save the sum of all that *don't belong*. We define an integer `sum` of all elements up to the current one, so that `sum - complement-to-the-prefix` equals `prefix`. If `sum - complement-to-the-prefix == target - nums[i]`, then we have found a valid subarray.
 ```
 sum = sum + nums[i];
 if(our set contains (sum - target)) {
@@ -49,7 +49,7 @@ Within the given constraints, we will never have our `sum` variable be bigger th
 We do need to pay attention to when `nums[i] == target`, e.g. subarrays of size 1. Empty subarrays are explicitly forbidden by the problem description, and with good reason.
 
 ##### Complexity Analysis
-Worst case, we never find a valid subarray and our set of complements keeps growing by one at each point. We always need to traverse the whole loop, and each time we need to make one lookup and one update to our set.
+Worst case, we never find a valid subarray and our set of complements keeps growing by one at each point. We always need to traverse the whole loop, and each time we need to make one lookup and one addition to our set.
 
 Time complexity: ***O(n)***
 
