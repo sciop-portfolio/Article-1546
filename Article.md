@@ -1,7 +1,7 @@
 # Solution
 ### Approach 1: Greedy with a collection of prefixes
 ##### Intuition
-As a general rule, any greedy approach to a dynamic programming problem requires us to explicitly make sure that the steps taken lead us to a correct solution. Greedy is only feasible when we have **proof** that greedy is correct.
+As a general rule, any greedy approach to a dynamic programming problem requires us to explicitly make sure that the steps taken lead us to a correct solution. Greedy is only feasible when we have **proof** that our particular greedy solution is correct.
 
 We can be sure that the first valid subarray <code>[i<sub>1</sub>, j<sub>1</sub>]</code> we find, starting from the left, belongs to a best set of non-overlapping subarrays:
   - <code>j<sub>1</sub></code> is the smallest of all <code>j<sub>k</sub></code>.
