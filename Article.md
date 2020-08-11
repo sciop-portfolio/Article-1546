@@ -54,25 +54,25 @@ This approach would take us O(n<sup>2</sup>) time (O(n) per cycle).
 However, this is wasting a lot of time: we are adding the same number again and again. Instead, we could:
 - Use a set as our container of prefixes. Checking if a set has an element `e` where `e == target - nums[i]` takes us O(1) time. Also, in a better-than-worse-case scenario, it would save us some space and time, if we have multiple prefixes that add up to the same number.
 - Instead of saving the sum of all elements that belong to our prefix, we save the sum of all that **don't belong**:
-```
-{
-0,
-nums[0],
-nums[0] + nums[1],
-...
-nums[0] + nums[1] + ... + nums[i-1]
-}
-```
-We define an integer `sum` of all elements up to the current one, so that `sum - complement_to_the_prefix` equals `prefix`. If `sum - complement_to_the_prefix == target - nums[i]`, then we have found a valid subarray. At the end of each cycle, `sum == new_complement` without any other intervention, so we just have to add `sum` to our set, and that costs us O(1) time and O(1) space. Earlier complements don't change as we move to the right.
-```
-sum = sum + nums[i];
-if(our set contains (sum - target)) {
-  answer++;
-  empty the set;
-  sum = 0;
-}
-add sum to the set;
-```
+>```
+>{
+>0,
+>nums[0],
+>nums[0] + nums[1],
+>...
+>nums[0] + nums[1] + ... + nums[i-1]
+>}
+>```
+>We define an integer `sum` of all elements up to the current one, so that `sum - complement_to_the_prefix` equals `prefix`. If `sum - complement_to_the_prefix == target - nums[i]`, then we have found a valid subarray. At the end of each cycle, `sum == new_complement` without any other intervention, so we just have to add `sum` to our set, and that costs us O(1) time and O(1) space. Earlier complements don't change as we move to the right.
+>```
+>sum = sum + nums[i];
+>if(our set contains (sum - target)) {
+>  answer++;
+>  empty the set;
+>  sum = 0;
+>}
+>add sum to the set;
+>```
 
 ##### Analysis of constraints
 Within the given constraints, we will never have our `sum` variable be bigger than <code>10<sup>4</sup> * 10<sup>5</sup> = 10<sup>9</sup></code>, nor will any element of our set be bigger than that value. 4-byte signed integers would do fine. `Answer` will also never be bigger than <code>10<sup>5</sup></code>. In addition, there is no concern for an empty `nums`, and `target` is within reasonable constraints. There is no need to check for any special boundary cases.
