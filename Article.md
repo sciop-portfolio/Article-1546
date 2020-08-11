@@ -1,5 +1,5 @@
 # Solution
-### Approach 1: Greedy with a collection of prefixes
+### Approach 1: Greedy with a set of prefixes
 ##### Intuition
 
 This problem involves a certain buildup of complexity. A brute force approach would force us to:
@@ -7,7 +7,7 @@ This problem involves a certain buildup of complexity. A brute force approach wo
   - Find all combinations of valid subarrays where none overlaps with each other.
   - Loop through our collection of collections of subarrays to find out which one has the biggest size.
   
-Here we will try to greedily cut `nums` into sections that we know contain valid subarrays, as often as we can, and count the number of cuts.
+Here we will try to greedily cut `nums` into sections that we know contain valid subarrays, as often as we can, and count the number of cuts. We will assume that the first subarray we find belongs. Then, starting there, the first subarray we find belongs.
 
 We need to make sure that our solution is correct. Since the valid subarray collection we seek is non-overlapping, if we can prove that the first chosen subarray is the first of a not-smaller-than-the-biggest collection (a best collection), it is easy to see that `max(nums) == max(cut) + max(nums_after_cut)`. 
 
