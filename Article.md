@@ -70,7 +70,7 @@ else add sum to the set;
 ```
 
 ##### Analysis of constraints
-Within the given constraints, we will never have our `sum` variable be bigger than <code>10<sup>4</sup> * 10<sup>5</sup> = 10<sup>9</sup></code>, nor will any element of our set be bigger than that value. 4-byte signed integers would do fine. `Answer` will also never be bigger than <code>10<sup>5</sup></code>. Also, there is no concern for an empty `nums`, and `target` is within reasonable constraints. There is no need to check for any special boundary cases.
+Within the given constraints, we will never have our `sum` variable be bigger than <code>10<sup>4</sup> * 10<sup>5</sup> = 10<sup>9</sup></code>, nor will any element of our set be bigger than that value. 4-byte signed integers would do fine. `Answer` will also never be bigger than <code>10<sup>5</sup></code>. In addition, there is no concern for an empty `nums`, and `target` is within reasonable constraints. There is no need to check for any special boundary cases.
 
 We do need to pay attention to when `nums[i] == target`, e.g. subarrays of size 1. Empty subarrays are explicitly forbidden by the problem description, and with good reason, given that `target` can be 0.
 
