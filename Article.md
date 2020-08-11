@@ -9,7 +9,7 @@ This problem involves a certain buildup of complexity. A brute force approach wo
   
 Here we will try to greedily cut `nums` into sections that we know contain valid subarrays, as often as we can, and count the number of cuts. We will assume that the first subarray we find belongs to the best collection. Then, starting at the next index, the first subarray we find also belongs to the best collection.
 
-We need to make sure that our solution is correct. If we can prove that the first chosen subarray is the first of a best collection, it is easy to see that `max(nums) == max(cut) + max(nums_after_cut)`. 
+We need to make sure that our solution is correct. If we can prove that the first chosen subarray is the first of a best collection, it is easy to see that `max(nums) == 1 + max(nums_after_cut)`. 
 
 At each cut, we are effectively choosing one subarray that's entirely inside the current section. There could be more than one, but all of them end at the last position of the cut. If not, we would have found them, and made the cut, earlier. We don't care about which one we should choose, these are all equally acceptable alternatives, all of them overlap, and besides, we only care about the number of subarrays. We simply do `answer++`.
 
