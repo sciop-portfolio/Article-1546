@@ -9,7 +9,7 @@ This problem involves a certain buildup of complexity. A brute force approach wo
   
 Here we will try to greedily cut `nums` into sections that we know contain valid subarrays, as often as we can, and count the number of cuts. We will assume that the first subarray we find belongs to the best collection. Then, starting at the next index, the first subarray we find also belongs to the best collection.
 
-We need to make sure that our solution is correct. Since the valid subarray collection we seek is non-overlapping, if we can prove that the first chosen subarray is the first of a not-smaller-than-the-biggest collection (a best collection), it is easy to see that `max(nums) == max(cut) + max(nums_after_cut)`. 
+We need to make sure that our solution is correct. If we can prove that the first chosen subarray is the first of a best collection, it is easy to see that `max(nums) == max(cut) + max(nums_after_cut)`. 
 
 At each cut, we are effectively choosing one subarray that's entirely inside the current section. There could be more than one (e.g. if our cut was `{0, -1, 1, 40, 60}` with `target == 100`), but all of them end at the last position of the cut (in our example, `{{40, 60}, {-1, 1, 40, 60}, {0, -1, 1, 40, 60}}`). If not, we would have found them, and made the cut, earlier. We don't care about which one we should choose. We simply do `answer++`.
 
