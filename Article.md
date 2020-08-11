@@ -38,7 +38,7 @@ Add 0 to the list;
 for each prefix {
   if(prefix + nums[i] == target) {
     answer++;
-    empty our collection;
+    empty the list;
   }
   else prefix = prefix + nums[i];
 }
