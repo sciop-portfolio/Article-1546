@@ -20,7 +20,7 @@ At each cut, we are effectively choosing one subarray that's entirely inside the
 
 Any non-conflicting subarray is after the cut, and we can deal with it once we get there, any one that conflicts is not better than the one we are choosing. The chosen subarray is the first of a best collection of subarrays.
 
-Now, we could `return 1 + maxNonOverlapping(nums_after_cut, target);`, or simply update a counter and reset all auxiliary variables.
+Now, we could `return 1 + maxNonOverlapping(nums_after_cut, target);`, or simply update a counter and reset all auxiliary variables and continue from <code>i<sub>end</sub> + 1</code>.
     
 
 ##### Algorithm
