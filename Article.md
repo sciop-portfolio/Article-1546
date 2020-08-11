@@ -34,15 +34,13 @@ nums[0] + nums[1] + ... + nums[i-1],
 At each point we would check if we have a prefix where `prefix + nums[i] == target`.
 A naive approach would be to do just that:
 ```
+Add 0 to the collection;
 for each prefix {
   if(prefix + nums[i] == target) {
     answer++;
     empty our collection;
   }
   else prefix = prefix + nums[i];
-}
-if(we didn't find any match) {
-  add nums[i] to the collection
 }
 ```
 
