@@ -3,20 +3,19 @@
 ##### Intuition
 
 This problem involves a certain buildup of complexity. A brute force approach would force us to:
-  - Find not one substring of `nums` with `sum == target` but all possible *valid substrings*.
-  - Find all combinations of valid substrings where none overlaps with each other.
-  - Loop through our collection of collections of substrings to find out which one has the biggest size.
+  - Find not one subarray of `nums` with `sum == target` but all possible *valid subarrays*.
+  - Find all combinations of valid subarrays where none overlaps with each other.
+  - Loop through our collection of collections of subarrays to find out which one has the biggest size.
   
-Here we will try to greedily cut `nums` into sections that we know contain valid substrings, as often as we can, and count the number of cuts.
+Here we will try to greedily cut `nums` into sections that we know contain valid subarrays, as often as we can, and count the number of cuts.
 
-As a general rule, any greedy approach to a dynamic programming problem requires us to explicitly make sure that the steps taken lead us to a correct solution. Greedy is only good in this kind of problems when we have **proof** that our particular greedy solution is correct.
+We need to make sure that our solution is correct. Since the valid subarray collection we seek is non-overlapping, if we can prove that the first chosen subarray belongs to a best collection, it is easy to see that `max(nums) == max(cut) + max(nums_after_cut)`. 
 
-We can be sure that the first valid [subarray](https://www.techiedelight.com/difference-between-subarray-subsequence-subset/) <code>[i<sub>1</sub>, j<sub>1</sub>]</code> we find, starting from the left, belongs to a best collection of non-overlapping subarrays:
-  - <code>j<sub>1</sub></code> is the smallest of all <code>j<sub>k</sub></code>.
-  - If we split `nums` into two subarrays <code>[0, j<sub>1</sub>]</code> and <code>[j<sub>1</sub> + 1, nums.length - 1]</code>, 
-    - To the left side there isn't more than one non-overlapping valid subarray. There could be more than one valid subarray, but all of them end at <code>j<sub>1</sub></code>.
-    - Any valid subarray <code>[i<sub>m</sub>, j<sub>m</sub>]</code> that begins on the left side and ends on the right has no valid non-overlapping subarrays to the left of <code>i<sub>m</sub></code>. The remaining space to the right of <code>j<sub>m</sub></code> is a subarray of our remaining space, since by definition <code>j<sub>1</sub> < j<sub>m</sub></code>. Therefore, any collection of subarrays that we can find in that remaining space (<code>[j<sub>m</sub> + 1, nums.length - 1]</code>) is also a collection of subarrays of our space (<code>[j<sub>1</sub> + 1, nums.length - 1]</code>). Any collection that includes <code>[i<sub>m</sub>, j<sub>m</sub>]</code> as a member has a size smaller or equal to the one we are extracting. Remember that **we only want the maximum size**, not the subarrays themselves.
-  - At this point, we can recursively find the rest of the collection by returning `maxNonOverlapping(remaining_nums_after_j1, target) + 1`, or better yet, reset our auxiliary variables and continue traversing `nums` from <code>j<sub>1</sub> + 1</code>.
+At each cut, we are effectively choosing one subarray that's entirely inside the current section. There could be more than one (e.g. if our cut was `{0, -1, 1, 40, 60}` with `target == 100`), but all of them end at the last position of the cut (in our example, `{{40, 60}, {-1, 1, 40, 60}, {0, -1, 1, 40, 60}}`). If not, we would have found them, and made the cut, earlier. We don't care about which one we should choose. We simply do `answer++`.
+
+We could also have a valid subarray that conflicts with these, that ends after our cut. This alternative choice could be just as good as the one we are taking, but it could never be better: let <code>(i<sub>1</sub>, i<sub>2</sub>)</code> be the starting and ending indexes of our first choice, <code(j<sub>1</sub>, j<sub>2</sub>)</code> our alternative. By definition, <code>i<sub>2</sub> < j<sub>2</sub></code>. Therefore, <code>(j<sub>2</sub>, nums.length-1)</code> is a subarray of <code>(i<sub>2</sub>, nums.length-1)</code>. Any collection of subarrays that we can extract from the alternative choice after the cut (valid or invalid, overlapping or not, including the best valid non-overlapping) is also a collection of subarrays that we can extract from the other one. Therefore `max(alt_cut) <= max(current_cut)`.
+
+Any non-conflicting subarray is after the cut, and we can deal with it once we get there, anyone that conflicts is not better than the one we are choosing. The chosen subarray belongs to a best collection of subarrays. At this point, we can recursively find the rest of the collection by returning `maxNonOverlapping(remaining_nums_after_j1, target) + 1`, or better yet, reset our auxiliary variables and continue traversing `nums` from <code>j<sub>1</sub> + 1</code>.
     
 
 ##### Algorithm
