@@ -74,6 +74,18 @@ However, this is wasting a lot of time: we are adding the same number again and 
   }
   add sum to the set;
   ```
+  
+##### Recursive Alternative
+We already described the basic logic of this alternative at the end of our intuition section: when we find a valid subarray, we call the function again with a reduced base array.
+
+Creating a new array of the right size, and copying all elements into it, is a computationally expensive task. Fortunately we can avoid that by unloading all logic to a helper function with one additional argument: a starting index:
+```
+if(found a valid subarray) return 1 + maxNonOverlapping(nums, target, i + 1);
+```
+And in the body of our main function:
+```
+return maxNonOverlapping(nums, target, 0);
+```
 
 ##### Analysis of constraints
 Within the given constraints, we will never have our `sum` variable be bigger than <code>10<sup>4</sup> * 10<sup>5</sup> = 10<sup>9</sup></code>, nor will any element of our set be bigger than that value. 4-byte signed integers would do fine. `Answer` will also never be bigger than <code>10<sup>5</sup></code>. In addition, there is no concern for an empty `nums`, and `target` is within reasonable constraints. There is no need to check for any special boundary cases.
