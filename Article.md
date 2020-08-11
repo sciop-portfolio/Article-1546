@@ -21,7 +21,16 @@ Any non-conflicting subarray is after the cut, and we can deal with it once we g
 ##### Algorithm
 We need to loop through `nums` from the beginning, and at each point we want to check if there is a subarray of `nums` that ends where we are, that adds up to `target`. 
 
-We can maintain a list of (sums of) prefixes, and at each point check if we have a prefix where `prefix + nums[i] == target`.
+We can maintain a list of (sums of) prefixes:
+```
+{
+nums[i] + ... + nums[1] + nums[0],
+nums[i] + ... + nums[0],
+...,
+nums[i]
+}
+```
+At each point we would check if we have a prefix where `prefix + nums[i] == target`.
 A naive approach would be to do just that:
 ```
 for each prefix {
