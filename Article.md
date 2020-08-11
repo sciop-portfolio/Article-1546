@@ -64,8 +64,9 @@ sum = sum + nums[i];
 if(our set contains (sum - target)) {
   answer++;
   empty the set;
+  sum = 0;
 }
-else add sum to the set;
+add sum to the set;
 ```
 
 ##### Analysis of constraints
