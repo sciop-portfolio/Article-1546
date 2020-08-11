@@ -78,7 +78,7 @@ However, this is wasting a lot of time: we are adding the same number again and 
 ##### Recursive Alternative
 We already described the basic logic of this alternative at the end of our intuition section: when we find a valid subarray, we call the function again with a reduced base array.
 
-Creating a new array of the right size, and copying all elements into it, is a computationally expensive task. Fortunately we can avoid that by unloading all logic to a helper function with one additional argument: a starting index:
+Creating a new array of the right size, and copying all elements into it, is a computationally expensive task. Fortunately we can avoid that by unloading all the logic to a helper function with a starting index as an additional argument.
 ```
 if(found a valid subarray) return 1 + maxNonOverlapping(nums, target, i + 1);
 ```
