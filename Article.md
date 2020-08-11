@@ -16,6 +16,7 @@ If our subarray doesn't conflict with any other subarray, then it is clear that 
  - By definition, <code>i<sub>end</sub> <= alt<sub>end</sub></code>, or we would have found `alt` first.
  - Therefore, <code>(alt<sub>end</sub> + 1, nums.length-1)</code> is a subarray of <code>(i<sub>end</sub> + 1, nums.length-1)</code>.
  - Any collection of subarrays of a subarray of some `A` is a collection of subarrays of `A`.
+ - The best collection of non-overlapping subarrays of `nums_after_alternative` is a collection of non-overlapping subarrays of `nums_after_current`.
  - In conclusion, `max(after_alternative) <= max(after_current)`.
 
 Any non-conflicting subarray starts after the one we found, and we can deal with it once we get there; any one that conflicts is not better than the one we are choosing. The chosen subarray is the first of a best collection of subarrays.
