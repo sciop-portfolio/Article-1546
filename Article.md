@@ -31,7 +31,7 @@ nums[0] + nums[1] + ... + nums[i-1],
                                   0
 }
 ```
-At each point we would check if we have a prefix where `prefix + nums[i] == target`.
+...and check at each point if we have a prefix where `prefix + nums[i] == target`.
 A naive approach would be to do just that:
 ```
 Add 0 to the list;
