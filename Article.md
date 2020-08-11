@@ -2,7 +2,7 @@
 ### Approach 1: Greedy with a collection of prefixes
 ##### Intuition
 
-This problem entails a certain buildup of complexity. A brute force approach would force us to:
+This problem involves a certain buildup of complexity. A brute force approach would force us to:
   - Find not one substring of `nums` with `sum == target` but all possible *valid substrings*.
   - Find all combinations of valid substrings where none overlaps with each other.
   - Loop through our collection of collections of substrings to find out which one has the biggest size.
