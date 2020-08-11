@@ -52,6 +52,7 @@ However, this is wasting a lot of time: we are adding the same number again and 
 - Instead of saving the sum of all elements that belong to our prefix, we save the sum of all that **don't belong**:
 ```
 {
+0,
 nums[0],
 nums[0] + nums[1],
 ...
