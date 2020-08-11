@@ -6,12 +6,11 @@ class Solution {
         for(int i = 0; i < nums.length; i++) {
             sum += nums[i];
             if(complements.contains(sum - target)) {
-                complements = new HashSet();
-                complements.add(0);
-                sum = 0;
                 answer++;
-            } else {
-                complements.add(sum);
+                complements = new HashSet();
+                sum = 0;
+            }
+            complements.add(sum);
             }
         }
         return answer;
