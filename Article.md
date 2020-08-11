@@ -25,9 +25,9 @@ We can maintain a list of (sums of) prefixes:
 ```
 {
 nums[i-1] + ... + nums[1] + nums[0],
-nums[i-1] + ... + nums[0],
-...,
-nums[i-1]
+          nums[i-1] + ... + nums[1],
+                                ...,
+                          nums[i-1]
 }
 ```
 At each point we would check if we have a prefix where `prefix + nums[i] == target`.
