@@ -7,18 +7,18 @@ This problem involves a certain buildup of complexity. A brute force approach wo
   - Find all combinations of valid subarrays where none overlaps with each other.
   - Loop through our collection of collections of subarrays to find out which one has the biggest size.
   
-Here we will try to greedily cut `nums` into sections that we know contain valid subarrays, as often as we can, and count the number of cuts. We will assume that the first subarray we find belongs to the best collection. Then, starting at the next index, the first subarray we find also belongs to the best collection.
+Here we will try to greedily assume that the first subarray we find (the one with the smallest right index) belongs to a best collection (one with `size == maxSize`). Then, starting at the next index, the first non-overlapping subarray we find also belongs to the best collection.
 
-We need to make sure that our solution is correct. If we can prove that the first chosen subarray is the first of a best collection, it is easy to see that `max(nums) == 1 + max(nums_after_cut)`. 
+We need to make sure that our solution is correct. If we can prove that the first one belongs, it is easy to see that `max(nums) == 1 + max(nums_after_subarray)`. 
 
-At each cut, we are effectively choosing one subarray that's entirely inside the current section. If this subarray doesn't conflict with any other subarray, then it belongs to a best collection of subarrays. If it does conflict, then any alternative choice could be just as good as the one we are taking, but it could never be better: 
+If our subarray doesn't conflict with any other subarray, then it is clear that it belongs to all best collections of subarrays. If it does conflict, then any alternative choice could be just as good as the one we are taking, but it could never be better: 
  - let <code>(i<sub>st</sub>, i<sub>end</sub>)</code> be the starting and ending indexes of our first choice, <code>(alt<sub>st</sub>, alt<sub>end</sub>)</code> our alternative. 
- - By definition, <code>i<sub>end</sub> <= alt<sub>end</sub></code>, or the cut would have happened sooner.
+ - By definition, <code>i<sub>end</sub> <= alt<sub>end</sub></code>, or we would have found `alt` first.
  - Therefore, <code>(alt<sub>end</sub> + 1, nums.length-1)</code> is a subarray of <code>(i<sub>end</sub> + 1, nums.length-1)</code>.
  - Any collection of subarrays of a subarray of some `A` is a collection of subarrays of `A`.
- - In conclusion, `max(after_alternative_cut) <= max(after_current_cut)`.
+ - In conclusion, `max(after_alternative) <= max(after_current)`.
 
-Any non-conflicting subarray is after the cut, and we can deal with it once we get there, any one that conflicts is not better than the one we are choosing. The chosen subarray is the first of a best collection of subarrays.
+Any non-conflicting subarray starts after the one we found, and we can deal with it once we get there; any one that conflicts is not better than the one we are choosing. The chosen subarray is the first of a best collection of subarrays.
 
 At this point, to find the total number, we could `return 1 + maxNonOverlapping(nums_after_cut, target);`, or simply update a counter and reset all auxiliary variables and continue from <code>i<sub>end</sub> + 1</code>.
     
