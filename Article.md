@@ -24,8 +24,8 @@ We need to loop through `nums` from the beginning, and at each point we want to 
 We can maintain a list of (sums of) prefixes:
 ```
 {
-nums[i-1] + ... + nums[1] + nums[0],
-          nums[i-1] + ... + nums[1],
+nums[0] + nums[1] + ... + nums[i-1],
+          nums[1] + ... + nums[i-1],
                                 ...,
                           nums[i-1]
 }
