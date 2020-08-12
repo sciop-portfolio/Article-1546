@@ -84,7 +84,9 @@ if(found a valid subarray) return 1 + helper(nums, target, i + 1);
 ```
 And in the body of our main function:
 ```
-return helper(nums, target, 0);
+{
+    return helper(nums, target, 0);
+}
 ```
 
 ##### Analysis of constraints
