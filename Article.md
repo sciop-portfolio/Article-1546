@@ -80,12 +80,11 @@ We already described the basic logic of this alternative at the end of our intui
 
 Creating a new array of the right size, and copying all elements into it, is a computationally expensive task. Fortunately we can avoid that by unloading all the logic to a helper function with a starting index as an additional argument.
 ```
-// Here, maxNonOverlapping() is overloaded
-if(found a valid subarray) return 1 + maxNonOverlapping(nums, target, i + 1);
+if(found a valid subarray) return 1 + helper(nums, target, i + 1);
 ```
 And in the body of our main function:
 ```
-return maxNonOverlapping(nums, target, 0);
+return helper(nums, target, 0);
 ```
 
 ##### Analysis of constraints
